@@ -1,0 +1,26 @@
+FROM ocdr/dkube-datascience-tf-cpu:v1.14
+USER root
+
+RUN pip3 install ptvsd==4.3.0
+
+COPY ./config /config
+COPY ./project /project
+WORKDIR /project/user-app
+
+ENV APPSODY_MOUNTS=/:/project/user-app
+
+ENV APPSODY_WATCH_REGEX="^.*.py$"
+
+ENV APPSODY_RUN="python3 app.py"
+ENV APPSODY_RUN_ON_CHANGE="python3 app.py"
+ENV APPSODY_RUN_KILL=true
+
+ENV APPSODY_DEBUG="python3 app.py --debug"
+ENV APPSODY_DEBUG_ON_CHANGE="python3 app.py --debug"
+ENV APPSODY_DEBUG_KILL=true
+
+ENV APPSODY_TEST="python3 app.py --debug"
+ENV APPSODY_TEST_ON_CHANGE=""
+ENV APPSODY_TEST_KILL=false
+
+EXPOSE 5678

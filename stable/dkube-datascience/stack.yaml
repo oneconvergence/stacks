@@ -1,0 +1,7 @@
+name: DKube DataScience
+version: 1.14.0
+description: DKube DataScience Stack
+license: Apache-2.0
+maintainers:
+  - name: rajendra
+default-template: tensorflow
