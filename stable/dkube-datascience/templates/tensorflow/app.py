@@ -1,9 +1,9 @@
 from __future__ import print_function
-import os
+import os, sys
 import ptvsd
 import argparse
-import tensorflow as tf
 from dkube_job import dkube_run
+import model
 
 if __name__ == "__main__":
     run_in_dkube = os.environ.get("RUN_IN_DKUBE", "false")
@@ -22,18 +22,6 @@ if __name__ == "__main__":
         print ("Debugger: waiting...")
         ptvsd.wait_for_attach()
         
-
-    # Simple hello world using TensorFlow
-
-    # Create a Constant op
-    # The op is added as a node to the default graph.
-    #
-    # The value returned by the constructor represents the output
-    # of the Constant op.
-    hello = tf.constant('Hello, TensorFlow!')
-
-    # Start tf session
-    sess = tf.Session()
-
-    # Run the op
-    print(sess.run(hello))
+    os.environ["DATUMS_PATH"] = "/project/user-app/data"
+    os.environ["DATASET_NAME"] = "mnist"
+    model.run()
