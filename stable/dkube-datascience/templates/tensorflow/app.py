@@ -3,6 +3,8 @@ import os, sys
 import ptvsd
 import argparse
 from dkube_job import dkube_run
+os.environ["DATUMS_PATH"] = "/project/user-app/data"
+os.environ["DATASET_NAME"] = "mnist"
 import model
 
 if __name__ == "__main__":
@@ -21,7 +23,5 @@ if __name__ == "__main__":
         ptvsd.enable_attach(redirect_output=True)
         print ("Debugger: waiting...")
         ptvsd.wait_for_attach()
-        
-    os.environ["DATUMS_PATH"] = "/project/user-app/data"
-    os.environ["DATASET_NAME"] = "mnist"
+
     model.run()
