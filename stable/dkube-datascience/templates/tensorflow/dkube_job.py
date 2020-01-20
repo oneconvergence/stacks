@@ -20,6 +20,6 @@ def dkube_run():
     signal.signal(signal.SIGTERM, sigterm_handler)
     config = update_job_name()
     print ("**************************************************************************************")
-    print ("DKube training dashboard: " + config['CUSTOM_JOB']["dkubeURL"] + "/#/ds/jobs/trainings")
+    print ("DKube training dashboard: " + config['CUSTOM_JOB']["dkubeURL"].strip('\"') + "/#/ds/jobs/trainings")
     print ("**************************************************************************************")
     return os.system ("/project/dkubectl customjob start -c /tmp/.dkube_job.ini")
