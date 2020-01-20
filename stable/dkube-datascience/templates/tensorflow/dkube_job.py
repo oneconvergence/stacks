@@ -14,8 +14,12 @@ def update_job_name():
     config['CUSTOM_JOB']["name"] = '"{}"'.format(y["project-name"] + "-" + time.strftime("%Y%m%d-%H%M%S"))
     with open("/tmp/.dkube_job.ini", "w") as f:
         config.write(f)
-
+    return config
+    
 def dkube_run():
     signal.signal(signal.SIGTERM, sigterm_handler)
-    update_job_name()
+    config = update_job_name()
+    print ("**************************************************************************************")
+    print ("DKube training dashboard: " + config['CUSTOM_JOB']["dkubeURL"] + "/#/ds/jobs/trainings")
+    print ("**************************************************************************************")
     return os.system ("/project/dkubectl customjob start -c /tmp/.dkube_job.ini")
