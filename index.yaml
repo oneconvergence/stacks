@@ -2,7 +2,7 @@ apiVersion: v2
 stacks:
 - id: dkube-datascience
   name: DKube DataScience
-  version: 1.14.0
+  version: 2.6.0
   description: DKube DataScience Stack
   license: Apache-2.0
   language: ""
@@ -13,4 +13,4 @@ stacks:
   default-template: tensorflow
   templates:
   - id: tensorflow
-    url: https://raw.githubusercontent.com/oneconvergence/stacks/master/release/dkube-datascience.v1.14.0.templates.tensorflow.tar.gz
+    url: https://raw.githubusercontent.com/oneconvergence/stacks/master/release/dkube-datascience.v2.6.0.templates.tensorflow.tar.gz
