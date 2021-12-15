@@ -1,4 +1,4 @@
-FROM ocdr/dkube-datascience-tf-cpu:v2.6.0-10
+FROM ocdr/dkube-datascience:1.0.0
 USER root
 
 RUN pip3 install ptvsd==4.3.0

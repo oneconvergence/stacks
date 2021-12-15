@@ -10,5 +10,5 @@ WORKDIR /project/user-app
 ENV PATH="/project:${PATH}"
 ENV PYTHONPATH=/opt/dkube/program:/opt/dkube
 
-CMD ["python3", "app.py"]
+CMD ["python3", "/project/user-app/app.py"]
 EXPOSE 5678
